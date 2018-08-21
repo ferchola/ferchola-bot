@@ -29,7 +29,7 @@ server.post('/api/messages', connector.listen());
 * ---------------------------------------------------------------------------------------- */
 
 var tableName = 'botdata';
-var azureTableClient = new botbuilder_azure.AzureTableClient(tableName, process.env['AzureWebJobsStorage']);
+var azureTableClient = new botbuilder_azure.AzureTableClient(tableName, process.env['DefaultEndpointsProtocol=https;AccountName=cs2cebb1550e9eax4fe0xb26;AccountKey=/+q5L58yWfx0vq9PVp3VSVFZ7caB8yhzGZDGAeuZEB/IoHI3wl0s5dEhKvs5VQD4MxFtHOFFYFUC736ND1y1Rg==;EndpointSuffix=core.windows.net']);
 var tableStorage = new botbuilder_azure.AzureBotStorage({ gzipData: false }, azureTableClient);
 
 // Create your bot with a function to receive messages from the user
