@@ -29,22 +29,27 @@ server.post('/api/messages', connector.listen());
 * ---------------------------------------------------------------------------------------- */
 
 var tableName = 'botdata';
-var azureTableClient = new botbuilder_azure.AzureTableClient(tableName, process.env['DefaultEndpointsProtocol=https;AccountName=cs2cebb1550e9eax4fe0xb26;AccountKey=/+q5L58yWfx0vq9PVp3VSVFZ7caB8yhzGZDGAeuZEB/IoHI3wl0s5dEhKvs5VQD4MxFtHOFFYFUC736ND1y1Rg==;EndpointSuffix=core.windows.net']);
+//var azureTableClient = new botbuilder_azure.AzureTableClient(tableName, process.env['DefaultEndpointsProtocol=https;AccountName=cs2cebb1550e9eax4fe0xb26;AccountKey=ovRqhAdheU6BmtSi+1oLw/C+fcKn3uUhSX7uu4rvB5d/eOf1wgHytJU2Oi2dGCc0PcExrFDnEnGtOTVzmidTEg==;EndpointSuffix=core.windows.net']);
+//DefaultEndpointsProtocol=https;AccountName=cs2cebb1550e9eax4fe0xb26;AccountKey=ovRqhAdheU6BmtSi+1oLw/C+fcKn3uUhSX7uu4rvB5d/eOf1wgHytJU2Oi2dGCc0PcExrFDnEnGtOTVzmidTEg==;EndpointSuffix=core.windows.net/botdata
+var azureTableClient = new botbuilder_azure.AzureTableClient(tableName, 'cs2cebb1550e9eax4fe0xb26', 'ovRqhAdheU6BmtSi+1oLw/C+fcKn3uUhSX7uu4rvB5d/eOf1wgHytJU2Oi2dGCc0PcExrFDnEnGtOTVzmidTEg==');
 var tableStorage = new botbuilder_azure.AzureBotStorage({ gzipData: false }, azureTableClient);
 
 // Create your bot with a function to receive messages from the user
 // This default message handler is invoked if the user's utterance doesn't
 // match any intents handled by other dialogs.
 var bot = new builder.UniversalBot(connector, function (session, args) {
-    session.send('You reached the default message handler. You said \'%s\'.', session.message.text);
+    session.send('You reached the default message handler \n or something went REALLY WRONG. \nYou said \'%s\'.', session.message.text);
 });
 
 bot.set('storage', tableStorage);
 
 // Make sure you add code to validate these fields
-var luisAppId = process.env.LuisAppId;
-var luisAPIKey = process.env.LuisAPIKey;
-var luisAPIHostName = process.env.LuisAPIHostName || 'westus.api.cognitive.microsoft.com';
+//var luisAppId = process.env.LuisAppId;
+var luisAppId = '6c014a02-316c-4229-a46a-8c5283a2ff1e';
+//var luisAPIKey = process.env.LuisAPIKey;
+var luisAPIKey = 'c0b2267baa0448daac1e46f52fc0c9dd';
+//var luisAPIHostName = process.env.LuisAPIHostName || 'westus.api.cognitive.microsoft.com';
+var luisAPIHostName = 'westus.api.cognitive.microsoft.com';
 
 const LuisModelUrl = 'https://' + luisAPIHostName + '/luis/v2.0/apps/' + luisAppId + '?subscription-key=' + luisAPIKey;
 
