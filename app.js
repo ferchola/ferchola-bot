@@ -61,7 +61,7 @@ bot.recognizer(recognizer);
 // See https://docs.microsoft.com/en-us/bot-framework/nodejs/bot-builder-nodejs-recognize-intent-luis 
 bot.dialog('GreetingDialog',
     (session) => {
-        session.send('Hello Platinion consultant! You said \'%s\'.', session.message.text);
+        session.send('Hello Mr. consultant! You said \'%s\'.', session.message.text);
         session.endDialog();
     }
 ).triggerAction({
@@ -84,5 +84,31 @@ bot.dialog('CancelDialog',
     }
 ).triggerAction({
     matches: 'Cancel'
+    })
+
+bot.dialog('AskWeatherDialog',
+    (session) => {
+        session.send('The weather in Santiago is: 24 degrees Celsius! You question was\%s\'.', session.message.text);
+        session.endDialog();
+    }
+).triggerAction({
+    matches: 'AskWeather'
+    })
+
+bot.dialog('AskBestGamingPlatform',
+    (session) => {
+        session.send('PS4 obviously!');
+        session.endDialog();
+    }
+).triggerAction({
+    matches: 'AskBestGamingPlatform'
 })
 
+bot.dialog('Insult',
+    (session) => {
+        session.send('El %s sos vos! Yo solo soy un chatbot...' , session.message.text);
+        session.endDialog();
+    }
+).triggerAction({
+    matches: 'Insult'
+})
