@@ -61,7 +61,7 @@ bot.recognizer(recognizer);
 // See https://docs.microsoft.com/en-us/bot-framework/nodejs/bot-builder-nodejs-recognize-intent-luis 
 bot.dialog('GreetingDialog',
     (session) => {
-        session.send('Hello Mr. consultant!");
+        session.send('Hello Mr. consultant!');
         session.endDialog();
     }
 ).triggerAction({
